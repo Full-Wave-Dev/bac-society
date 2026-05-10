@@ -2,26 +2,83 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+/* Ticket page custom styles */
+.ticket-card {
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  padding: 20px 24px;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+.ticket-input {
+  width: 100%;
+  padding: 10px 14px;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  font-size: 15px;
+  font-family: 'Instrument Sans', sans-serif;
+  outline: none;
+  transition: border-color 0.2s;
 }
 
-body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+.ticket-input:focus {
+  border-color: #7c1f2e;
 }
 
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
-  }
+.btn-add {
+  background: transparent;
+  border: 2px solid #7c1f2e;
+  color: #7c1f2e;
+  padding: 10px 24px;
+  border-radius: 6px;
+  font-family: 'Instrument Sans', sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+}
+
+.btn-add:hover {
+  background: #7c1f2e;
+  color: #fff;
+}
+
+.btn-checkout {
+  background: #7c1f2e;
+  border: none;
+  color: #fff;
+  padding: 14px 32px;
+  border-radius: 6px;
+  font-family: 'Instrument Sans', sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: opacity 0.2s;
+  width: 100%;
+}
+
+.btn-checkout:hover:not(:disabled) {
+  opacity: 0.88;
+}
+
+.btn-checkout:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.btn-remove {
+  background: none;
+  border: none;
+  color: #9ca3af;
+  cursor: pointer;
+  padding: 4px;
+  line-height: 1;
+}
+
+.btn-remove:hover {
+  color: #ef4444;
 }
