@@ -1,101 +1,67 @@
-import Image from "next/image";
+import Link from 'next/link'
+import Nav from '@/components/Nav'
+import Footer from '@/components/Footer'
 
 export default function Home() {
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="https://nextjs.org/icons/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold">
-              app/page.tsx
-            </code>
-            .
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
-
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="https://nextjs.org/icons/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+    <div className="section cc-store-home-wrap">
+      <div className="intro-header">
+        <Nav transparent />
+        <div className="introwrap">
+          <div className="intro-content cc-homepage">
+            <div className="intro-text">
+              <div className="paragraph-bigger cc-bigger-white-light">
+                The Bacchanalian Society of Ohio is a Cincinnati based non-profit that brings together young professionals over wine to mix, mingle, and raise money for worthy causes. <br />
+              </div>
+            </div>
+            <div className="buttom-wrapper">
+              <Link href="/tickets" className="secondary-button borderdesign red w-inline-block"><div>Buy TIckets</div></Link>
+              <Link href="/events" className="secondary-button borderdesign w-inline-block"><div>Upcoming Event</div></Link>
+            </div>
+          </div>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
+      </div>
+
+      <div className="container">
+        <div className="home-content-wrap">
+          <div className="w-layout-grid about-grid">
+            <div id="w-node-about-1">
+              <div className="home-section-wrap">
+                <div className="label cc-light">About</div>
+                <h2 className="section-heading">Who we are</h2>
+                <p className="paragraph-light">The Bacchanalian Society of Ohio is a 501(c)3 non-profit organization whose mission is to bring together young professionals, philanthropists, wine lovers, and community leaders together through blind wine tasting events to raise money for charitable causes in the Cincinnati community.</p>
+              </div>
+            </div>
+            <img src="/assets/6822589c4c0724e7f480a4a7_Bacchanalian-36 1.png" id="w-node-about-img" sizes="(max-width: 820px) 100vw, 820px" srcSet="/assets/6822589c4c0724e7f480a4a7_Bacchanalian-36 1-p-500.png 500w, /assets/6822589c4c0724e7f480a4a7_Bacchanalian-36 1-p-800.png 800w, /assets/6822589c4c0724e7f480a4a7_Bacchanalian-36 1.png 820w" alt="" className="img" />
+          </div>
+          <div className="w-layout-grid about-grid cc-about-2">
+            <div id="w-node-events-1">
+              <div className="home-section-wrap">
+                <div className="label cc-light">Events</div>
+                <h2 className="section-heading">What we do</h2>
+                <p className="paragraph-light">The Bacchanalian Society host competitive wine tastings that bring together young professionals to network, mingle, and raise money for local nonprofit organizations.</p>
+              </div>
+            </div>
+            <img src="/assets/682258e616e46faf74a9da86_Bacchanalian-2 1.jpg" id="w-node-events-img" sizes="(max-width: 820px) 100vw, 820px" srcSet="/assets/682258e616e46faf74a9da86_Bacchanalian-2 1-p-500.jpg 500w, /assets/682258e616e46faf74a9da86_Bacchanalian-2 1-p-800.jpg 800w, /assets/682258e616e46faf74a9da86_Bacchanalian-2 1.jpg 820w" alt="" className="img" />
+          </div>
+        </div>
+      </div>
+
+      <div className="section cc-cta">
+        <div className="container">
+          <div className="cta-wrap">
+            <div>
+              <div className="cta-text">
+                <div className="heading-jumbo-small">Next Event<br /></div>
+                <div className="paragraph-bigger cc-bigger-light">June 25, 2026 <br />Ault park<br />Sauvignon Blanc<br /></div>
+              </div>
+              <Link href="/events" className="primary-button cc-jumbo-button w-inline-block"><div>View Info</div></Link>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <Footer />
     </div>
-  );
+  )
 }
