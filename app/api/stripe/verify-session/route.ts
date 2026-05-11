@@ -1,17 +1,33 @@
 import { NextRequest, NextResponse } from 'next/server'
-import Stripe from 'stripe'
 import { supabaseAdmin } from '@/lib/supabase'
 
+type StripeSession = {
+  id: string
+  payment_status: string
+  amount_total: number | null
+  metadata: Record<string, string>
+}
+
 export async function POST(req: NextRequest) {
-  const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!)
+  const key = process.env.STRIPE_SECRET_KEY
+  if (!key) {
+    return NextResponse.json({ error: 'Stripe key not configured' }, { status: 500 })
+  }
+
   try {
     const { session_id } = await req.json()
-
     if (!session_id) {
       return NextResponse.json({ error: 'Missing session_id' }, { status: 400 })
     }
 
-    const session = await stripe.checkout.sessions.retrieve(session_id)
+    const res = await fetch(`https://api.stripe.com/v1/checkout/sessions/${encodeURIComponent(session_id)}`, {
+      headers: { Authorization: `Bearer ${key}` },
+    })
+    const session = await res.json() as StripeSession & { error?: { message: string } }
+
+    if (!res.ok) {
+      return NextResponse.json({ error: 'Could not retrieve order' }, { status: 400 })
+    }
 
     if (session.payment_status !== 'paid') {
       return NextResponse.json({ error: 'Payment not completed' }, { status: 402 })
@@ -25,7 +41,6 @@ export async function POST(req: NextRequest) {
 
     const db = supabaseAdmin()
 
-    // Check for duplicate — if this session was already saved, return early
     const { data: existing } = await db
       .from('bac_ticket_purchases')
       .select('id')
@@ -45,7 +60,6 @@ export async function POST(req: NextRequest) {
     })
 
     if (insertError) {
-      // Unique constraint violation means it was inserted concurrently — treat as already saved
       if (insertError.code === '23505') {
         return NextResponse.json({ ok: true, already_saved: true, attendees })
       }

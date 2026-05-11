@@ -159,17 +159,7 @@ function SuccessContent() {
 export default function SuccessPage() {
   return (
     <div className="section cc-store-home-wrap">
-      <div className="intro-header cc-subpage">
-        <Nav />
-        <div className="introwrap">
-          <div className="intro-content">
-            <div className="intro-text">
-              <h1 className="heading-jumbo">Order Confirmed</h1>
-            </div>
-          </div>
-        </div>
-      </div>
-
+      <Nav />
       <div className="container">
         <div className="home-content-wrap">
           <Suspense fallback={

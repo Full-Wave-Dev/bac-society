@@ -1,175 +1,136 @@
 'use client'
 
 import { useState } from 'react'
+import Link from 'next/link'
 import Nav from '@/components/Nav'
 import Footer from '@/components/Footer'
-
-type FormState = {
-  name: string
-  email: string
-  subject: string
-  message: string
-}
 
 type SubmitStatus = 'idle' | 'loading' | 'success' | 'error'
 
 export default function ContactPage() {
-  const [form, setForm] = useState<FormState>({
-    name: '',
-    email: '',
-    subject: 'General Inquiry',
-    message: '',
-  })
+  const [name, setName] = useState('')
+  const [email, setEmail] = useState('')
+  const [message, setMessage] = useState('')
   const [status, setStatus] = useState<SubmitStatus>('idle')
-  const [errorMessage, setErrorMessage] = useState('')
-
-  function handleChange(
-    e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>
-  ) {
-    setForm((prev) => ({ ...prev, [e.target.name]: e.target.value }))
-  }
 
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault()
     setStatus('loading')
-    setErrorMessage('')
-
     try {
       const res = await fetch('/api/contact', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(form),
+        body: JSON.stringify({ name, email, subject: 'Contact Form', message }),
       })
-
-      if (!res.ok) {
-        throw new Error('Something went wrong. Please try again.')
-      }
-
+      if (!res.ok) throw new Error()
       setStatus('success')
-      setForm({ name: '', email: '', subject: 'General Inquiry', message: '' })
-    } catch (err) {
+      setName(''); setEmail(''); setMessage('')
+    } catch {
       setStatus('error')
-      setErrorMessage(err instanceof Error ? err.message : 'Something went wrong.')
     }
   }
 
   return (
-    <div className="section cc-store-home-wrap">
-      <div className="intro-header cc-subpage">
-        <Nav />
-        <div className="introwrap">
-          <div className="intro-content">
-            <div className="intro-text">
-              <h1 className="heading-jumbo">Contact<br /></h1>
+    <>
+      <Nav />
+      <div className="section">
+        <div className="container">
+          <div className="w-layout-grid contact-form-grid">
+            <div className="contact-form-wrap">
+              <div className="contact-form-heading-wrap">
+                <h2 className="contact-heading">Contact us</h2>
+                <div className="paragraph-light">
+                  Any questions or concerns about an upcoming events? Fill out the form below or email us and we will get back to you as soon as possible.
+                </div>
+              </div>
+              <div className="contact-form w-form">
+                {status === 'success' ? (
+                  <div className="status-message cc-success-message w-form-done">
+                    <div>Thank you! Your submission has been received!</div>
+                  </div>
+                ) : (
+                  <form onSubmit={handleSubmit} className="get-in-touch-form">
+                    <label htmlFor="Name">Name</label>
+                    <input
+                      className="text-field cc-contact-field w-input"
+                      maxLength={256}
+                      name="name"
+                      placeholder="Enter your name"
+                      type="text"
+                      id="Name"
+                      required
+                      value={name}
+                      onChange={e => setName(e.target.value)}
+                    />
+                    <label htmlFor="Email">Email Address</label>
+                    <input
+                      className="text-field cc-contact-field w-input"
+                      maxLength={256}
+                      name="Email"
+                      placeholder="Enter your email"
+                      type="email"
+                      id="Email"
+                      required
+                      value={email}
+                      onChange={e => setEmail(e.target.value)}
+                    />
+                    <label htmlFor="Message">Message</label>
+                    <textarea
+                      id="Message"
+                      name="Message"
+                      placeholder="Hey there, I was meaning to ask..."
+                      maxLength={5000}
+                      required
+                      className="text-field cc-textarea cc-contact-field w-input"
+                      value={message}
+                      onChange={e => setMessage(e.target.value)}
+                    />
+                    {status === 'error' && (
+                      <div className="status-message cc-error-message w-form-fail">
+                        <div>Oops! Something went wrong while submitting the form.</div>
+                      </div>
+                    )}
+                    <button
+                      type="submit"
+                      disabled={status === 'loading'}
+                      className="primary-button w-button"
+                      style={{ border: 'none', cursor: status === 'loading' ? 'not-allowed' : 'pointer' }}
+                    >
+                      {status === 'loading' ? 'Please wait...' : 'Submit'}
+                    </button>
+                  </form>
+                )}
+              </div>
+            </div>
+            <div>
+              <div className="details-wrap">
+                <div className="label">CONTACT</div>
+                <a href="mailto:ohiobacchanaliansociety@gmail.com" className="contact-email-link">
+                  ohiobacchanaliansociety@gmail.com
+                </a>
+              </div>
             </div>
           </div>
         </div>
       </div>
 
-      <div className="container">
-        <div className="home-content-wrap">
-          <div className="home-section-wrap">
-            <div className="label cc-light">Contact</div>
-            <h2 className="section-heading">Get In Touch</h2>
-            <p className="paragraph-light">
-              Have a question about our events, interested in partnering, or just want to learn more? Send us a message and we&apos;ll get back to you.
-            </p>
-
-            {status === 'success' ? (
-              <div style={{ marginTop: '2rem', padding: '2rem', background: '#f0f7f0', borderLeft: '4px solid #4a7c4e' }}>
-                <h3 style={{ margin: '0 0 0.5rem', color: '#2d5a30' }}>Message Sent!</h3>
-                <p style={{ margin: 0, color: '#2d5a30' }}>
-                  Thank you for reaching out. We&apos;ll be in touch with you shortly.
-                </p>
+      <div className="section cc-cta">
+        <div className="container">
+          <div className="cta-wrap">
+            <div>
+              <div className="cta-text">
+                <div className="heading-jumbo-small">Next Event<br /></div>
+                <div className="paragraph-bigger cc-bigger-light">June 25, 2026 <br />Ault park<br />Sauvignon Blanc<br /></div>
               </div>
-            ) : (
-              <form onSubmit={handleSubmit} style={{ marginTop: '2rem', maxWidth: '600px' }}>
-                <div style={{ marginBottom: '1.5rem' }}>
-                  <label className="label" style={{ display: 'block', marginBottom: '0.5rem' }}>
-                    Name
-                  </label>
-                  <input
-                    type="text"
-                    name="name"
-                    value={form.name}
-                    onChange={handleChange}
-                    required
-                    placeholder="Your full name"
-                    className="text-field w-input"
-                    style={{ width: '100%' }}
-                  />
-                </div>
-
-                <div style={{ marginBottom: '1.5rem' }}>
-                  <label className="label" style={{ display: 'block', marginBottom: '0.5rem' }}>
-                    Email
-                  </label>
-                  <input
-                    type="email"
-                    name="email"
-                    value={form.email}
-                    onChange={handleChange}
-                    required
-                    placeholder="your@email.com"
-                    className="text-field w-input"
-                    style={{ width: '100%' }}
-                  />
-                </div>
-
-                <div style={{ marginBottom: '1.5rem' }}>
-                  <label className="label" style={{ display: 'block', marginBottom: '0.5rem' }}>
-                    Subject
-                  </label>
-                  <select
-                    name="subject"
-                    value={form.subject}
-                    onChange={handleChange}
-                    required
-                    className="text-field w-select"
-                    style={{ width: '100%' }}
-                  >
-                    <option value="General Inquiry">General Inquiry</option>
-                    <option value="Event Info">Event Info</option>
-                    <option value="Partnership">Partnership</option>
-                    <option value="Other">Other</option>
-                  </select>
-                </div>
-
-                <div style={{ marginBottom: '1.5rem' }}>
-                  <label className="label" style={{ display: 'block', marginBottom: '0.5rem' }}>
-                    Message
-                  </label>
-                  <textarea
-                    name="message"
-                    value={form.message}
-                    onChange={handleChange}
-                    required
-                    placeholder="Your message..."
-                    rows={6}
-                    className="text-field w-input"
-                    style={{ width: '100%', resize: 'vertical' }}
-                  />
-                </div>
-
-                {status === 'error' && (
-                  <p style={{ color: '#c0392b', marginBottom: '1rem' }}>{errorMessage}</p>
-                )}
-
-                <button
-                  type="submit"
-                  disabled={status === 'loading'}
-                  className="primary-button w-inline-block"
-                  style={{ opacity: status === 'loading' ? 0.7 : 1, cursor: status === 'loading' ? 'not-allowed' : 'pointer', border: 'none' }}
-                >
-                  <div>{status === 'loading' ? 'Sending...' : 'Send Message'}</div>
-                </button>
-              </form>
-            )}
+              <Link href="/events" className="primary-button cc-jumbo-button w-inline-block">
+                <div>View Info</div>
+              </Link>
+            </div>
           </div>
         </div>
       </div>
 
       <Footer />
-    </div>
+    </>
   )
 }

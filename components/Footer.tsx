@@ -7,12 +7,12 @@ export default function Footer() {
         <div className="footer-wrap">
           <Link href="/" className="footer-item w-inline-block">
             <img
-              src="/assets/681ad62f25ca69d173eeeb9f_BacTransparent.png"
+              src="/images/BacTransparent.png"
               loading="lazy"
               width={198}
               sizes="(max-width: 479px) 100vw, 198px"
               alt=""
-              srcSet="/assets/681ad62f25ca69d173eeeb9f_BacTransparent-p-500.png 500w, /assets/681ad62f25ca69d173eeeb9f_BacTransparent-p-800.png 800w, /assets/681ad62f25ca69d173eeeb9f_BacTransparent.png 912w"
+              srcSet="/images/BacTransparent-p-500.png 500w, /images/BacTransparent-p-800.png 800w, /images/BacTransparent.png 912w"
               className="footerimg"
             />
           </Link>

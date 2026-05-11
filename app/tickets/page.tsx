@@ -96,17 +96,7 @@ export default function TicketsPage() {
 
   return (
     <div className="section cc-store-home-wrap">
-      <div className="intro-header cc-subpage">
-        <Nav />
-        <div className="introwrap">
-          <div className="intro-content">
-            <div className="intro-text">
-              <h1 className="heading-jumbo">Buy Tickets<br /></h1>
-            </div>
-          </div>
-        </div>
-      </div>
-
+      <Nav />
       <div className="container">
         <div className="home-content-wrap">
           <div className="home-section-wrap">
