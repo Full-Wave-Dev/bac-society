@@ -96,7 +96,7 @@ export default function TicketsPage() {
 
   return (
     <div className="section cc-store-home-wrap">
-      <Nav />
+      <Nav transparent />
       <div className="container">
         <div className="home-content-wrap">
           <div className="home-section-wrap">

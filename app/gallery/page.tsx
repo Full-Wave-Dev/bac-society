@@ -11,7 +11,7 @@ export const metadata: Metadata = {
 export default function GalleryPage() {
   return (
     <>
-      <Nav />
+      <Nav transparent />
       <div className="section">
         <div className="container no-pad">
           <div className="section-heading-wrap">

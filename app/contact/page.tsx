@@ -32,7 +32,7 @@ export default function ContactPage() {
 
   return (
     <>
-      <Nav />
+      <Nav transparent />
       <div className="section">
         <div className="container">
           <div className="w-layout-grid contact-form-grid">

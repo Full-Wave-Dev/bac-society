@@ -55,6 +55,14 @@ export default function Home() {
               />
             </div>
             <div className="w-layout-grid about-grid cc-about-2">
+              <img
+                src="/images/Bacchanalian-2-1.jpg"
+                id="w-node-events-img"
+                sizes="(max-width: 820px) 100vw, 820px"
+                srcSet="/images/Bacchanalian-2-1-p-500.jpg 500w, /images/Bacchanalian-2-1-p-800.jpg 800w, /images/Bacchanalian-2-1.jpg 820w"
+                alt=""
+                className="img"
+              />
               <div id="w-node-events-1">
                 <div className="home-section-wrap">
                   <div className="label cc-light">Events</div>
@@ -64,14 +72,6 @@ export default function Home() {
                   </p>
                 </div>
               </div>
-              <img
-                src="/images/Bacchanalian-2-1.jpg"
-                id="w-node-events-img"
-                sizes="(max-width: 820px) 100vw, 820px"
-                srcSet="/images/Bacchanalian-2-1-p-500.jpg 500w, /images/Bacchanalian-2-1-p-800.jpg 800w, /images/Bacchanalian-2-1.jpg 820w"
-                alt=""
-                className="img"
-              />
             </div>
           </div>
         </div>
