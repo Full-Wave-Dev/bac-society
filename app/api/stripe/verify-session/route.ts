@@ -41,6 +41,8 @@ export async function POST(req: NextRequest) {
 
     const db = supabaseAdmin()
 
+    const EVENT_NAME = 'June 25, 2026 — Ault Park — Sauvignon Blanc'
+
     const { data: existing } = await db
       .from('bac_ticket_purchases')
       .select('id')
@@ -51,13 +53,17 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ ok: true, already_saved: true, attendees })
     }
 
-    const { error: insertError } = await db.from('bac_ticket_purchases').insert({
-      stripe_session_id: session.id,
-      order_total: session.amount_total,
-      attendees,
-      checked_in_ids: [],
-      event_name: 'June 25, 2026 — Ault Park — Sauvignon Blanc',
-    })
+    const { data: inserted, error: insertError } = await db
+      .from('bac_ticket_purchases')
+      .insert({
+        stripe_session_id: session.id,
+        order_total: session.amount_total,
+        attendees,
+        checked_in_ids: [],
+        event_name: EVENT_NAME,
+      })
+      .select('id')
+      .single()
 
     if (insertError) {
       if (insertError.code === '23505') {
@@ -65,6 +71,43 @@ export async function POST(req: NextRequest) {
       }
       console.error('[verify-session] insert error:', insertError)
       return NextResponse.json({ error: 'Failed to save order' }, { status: 500 })
+    }
+
+    // Flatten attendees into the readable bac_attendees table (one row per person)
+    if (inserted?.id && attendees.length > 0) {
+      const rows = attendees.map((a) => ({
+        purchase_id: inserted.id,
+        first_name: a.firstName ?? '',
+        last_name: a.lastName ?? '',
+        email: a.email ?? '',
+        event_name: EVENT_NAME,
+        checked_in: false,
+      }))
+      const { error: attErr } = await db.from('bac_attendees').insert(rows)
+      if (attErr) console.error('[verify-session] bac_attendees insert error:', attErr)
+    }
+
+    // Push each attendee to the owner's Google Sheet via Apps Script web app
+    const sheetsUrl = process.env.BAC_SHEETS_WEBHOOK_URL
+    if (sheetsUrl && attendees.length > 0) {
+      try {
+        await fetch(sheetsUrl, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            event: EVENT_NAME,
+            orderTotal: session.amount_total ? session.amount_total / 100 : null,
+            stripeSessionId: session.id,
+            attendees: attendees.map((a) => ({
+              firstName: a.firstName ?? '',
+              lastName: a.lastName ?? '',
+              email: a.email ?? '',
+            })),
+          }),
+        })
+      } catch (sheetErr) {
+        console.error('[verify-session] google sheet push error:', sheetErr)
+      }
     }
 
     return NextResponse.json({ ok: true, attendees })
