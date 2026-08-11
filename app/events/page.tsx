@@ -97,7 +97,7 @@ export default function EventsPage() {
               <div className="w-layout-grid grid-layout mobile-landscape-1-column grid-gap-sm">
                 <div className="h4-heading">What is the availability of parking?</div>
                 <div className="rich-text-2 paragraph-lg w-richtext">
-                  <p>Parking is avaliable throughout Elm Street Plaza. Please drink responsibility and consider carpooling with a designated driver or calling an Uber or Lyft.</p>
+                  <p>Please drink responsibility and consider carpooling with a designated driver or calling an Uber or Lyft.</p>
                 </div>
               </div>
             </div>
