@@ -126,19 +126,19 @@ function SuccessContent() {
 
           <div style={{ marginBottom: '1.5rem' }}>
             <p className="paragraph-light" style={{ marginBottom: '0.5rem' }}>
-              <strong>Event:</strong> June 25, 2026
+              <strong>Event:</strong> Fall Tasting 2026 &mdash; October 1, 2026
             </p>
             <p className="paragraph-light" style={{ marginBottom: '0.5rem' }}>
-              <strong>Location:</strong> Ault Park, Cincinnati, OH
+              <strong>Location:</strong> Elm Street Plaza, Cincinnati, OH
             </p>
             <p className="paragraph-light" style={{ marginBottom: '0.5rem' }}>
-              <strong>Varietal:</strong> Sauvignon Blanc
+              <strong>Varietal:</strong> Pinot Grigio
             </p>
           </div>
 
           <p className="paragraph-light" style={{ marginBottom: '2.5rem' }}>
-            A confirmation email is on its way. See you at Ault Park on{' '}
-            <strong>June 25, 2026</strong>!
+            A confirmation email is on its way. See you at Elm Street Plaza on{' '}
+            <strong>October 1, 2026</strong>!
           </p>
 
           {sessionId && (

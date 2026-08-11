@@ -24,7 +24,7 @@ export default function EventsPage() {
                   <h2 className="section-heading">Cincinnati&apos;s premier young professional wine tasting</h2>
                   <p className="paragraph-light">
                     Cincinnati&apos;s premier young professional wine tasting event is an unforgettable night featuring{' '}
-                    <span className="link">Sauvignon Blanc wine</span>, live music from Jon Jon, and food samples. The Bacchanalian Society&apos;s signature event is a blind wine tasting where participants sample wine throughout the night and vote for their favorite while each bottle&apos;s brand name is hidden. This event brings together wine enthusiasts, philanthropists, foodies, and young professionals to network, mingle, and raise money for Charity.
+                    <span className="link">Pinot Grigio wine</span>, live music from Jon Jon, and food samples. The Bacchanalian Society&apos;s signature event is a blind wine tasting where participants sample wine throughout the night and vote for their favorite while each bottle&apos;s brand name is hidden. This event brings together wine enthusiasts, philanthropists, foodies, and young professionals to network, mingle, and raise money for Charity.
                   </p>
                 </div>
                 <div className="ticketsembedwrap" style={{ marginTop: '2rem' }}>
@@ -65,7 +65,7 @@ export default function EventsPage() {
               <div className="w-layout-grid grid-layout mobile-landscape-1-column grid-gap-sm">
                 <div className="h4-heading">How does the event work?</div>
                 <div className="rich-text-2 paragraph-lg w-richtext">
-                  <p>Participants will choose to register as an individual, with a friend, or as a team of three. Each team of 1, 2, or 3 guests will donate 3 identical bottles of Sauvignon Blanc that will be bagged &amp; blindly sampled throughout the night. Participants will vote while sampling to see which team wins!</p>
+                  <p>Participants will choose to register as an individual, with a friend, or as a team of three. Each team of 1, 2, or 3 guests will donate 3 identical bottles of Pinot Grigio that will be bagged &amp; blindly sampled throughout the night. Participants will vote while sampling to see which team wins!</p>
                 </div>
               </div>
             </div>
@@ -73,7 +73,7 @@ export default function EventsPage() {
               <div className="w-layout-grid grid-layout mobile-landscape-1-column grid-gap-sm">
                 <div className="h4-heading">What do I need to bring to the event?</div>
                 <div className="rich-text-2 paragraph-lg w-richtext">
-                  <p>Each ticket buyer needs to form a team of 1, 2, or 3 people and bring three identical bottles of Sauvignon Blanc wine per team. The wine donation will be sampled throughout the evening.</p>
+                  <p>Each ticket buyer needs to form a team of 1, 2, or 3 people and bring three identical bottles of Pinot Grigio wine per team. The wine donation will be sampled throughout the evening.</p>
                 </div>
               </div>
             </div>
@@ -81,7 +81,7 @@ export default function EventsPage() {
               <div className="w-layout-grid grid-layout mobile-landscape-1-column grid-gap-sm">
                 <div className="h4-heading">Can someone attend on their own?</div>
                 <div className="rich-text-2 paragraph-lg w-richtext">
-                  <p>Yes! Teams at the event are made up of 1, 2 or 3 guests so you can register and make new friends when you arrive. Individual guests still need to bring three identical bottles of Sauvignon Blanc wine.</p>
+                  <p>Yes! Teams at the event are made up of 1, 2 or 3 guests so you can register and make new friends when you arrive. Individual guests still need to bring three identical bottles of Pinot Grigio wine.</p>
                 </div>
               </div>
             </div>
@@ -97,7 +97,7 @@ export default function EventsPage() {
               <div className="w-layout-grid grid-layout mobile-landscape-1-column grid-gap-sm">
                 <div className="h4-heading">What is the availability of parking?</div>
                 <div className="rich-text-2 paragraph-lg w-richtext">
-                  <p>Parking is avaliable throughout Ault Park. Please drink responsibility and consider carpooling with a designated driver or calling an Uber or Lyft.</p>
+                  <p>Parking is avaliable throughout Elm Street Plaza. Please drink responsibility and consider carpooling with a designated driver or calling an Uber or Lyft.</p>
                 </div>
               </div>
             </div>

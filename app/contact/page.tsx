@@ -119,8 +119,8 @@ export default function ContactPage() {
           <div className="cta-wrap">
             <div>
               <div className="cta-text">
-                <div className="heading-jumbo-small">Next Event<br /></div>
-                <div className="paragraph-bigger cc-bigger-light">June 25, 2026 <br />Ault park<br />Sauvignon Blanc<br /></div>
+                <div className="heading-jumbo-small">Fall Tasting 2026<br /></div>
+                <div className="paragraph-bigger cc-bigger-light">October 1, 2026 <br />Elm Street Plaza<br />Pinot Grigio<br /></div>
               </div>
               <Link href="/events" className="primary-button cc-jumbo-button w-inline-block">
                 <div>View Info</div>

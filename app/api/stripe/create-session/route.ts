@@ -27,9 +27,9 @@ export async function POST(req: NextRequest) {
       'line_items[0][quantity]': String(attendees.length),
       'line_items[0][price_data][currency]': 'usd',
       'line_items[0][price_data][unit_amount]': '3000',
-      'line_items[0][price_data][product_data][name]': 'BAC Ticket — June 25, 2026',
+      'line_items[0][price_data][product_data][name]': 'BAC Ticket — Fall Tasting 2026',
       'metadata[attendees]': JSON.stringify(attendees),
-      'metadata[event]': 'June 25 2026 Ault Park',
+      'metadata[event]': 'Fall Tasting 2026 — October 1 2026 Elm Street Plaza',
       success_url: `${siteUrl}/tickets/success?session_id={CHECKOUT_SESSION_ID}`,
       cancel_url: `${siteUrl}/tickets`,
     })

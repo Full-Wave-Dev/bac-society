@@ -106,9 +106,10 @@ export default function TicketsPage() {
             {/* Event info */}
             <div className="ticket-card" style={{ marginBottom: '2rem' }}>
               <ul style={{ listStyle: 'none', padding: 0, margin: 0, lineHeight: '2' }}>
-                <li><strong>Date:</strong> June 25, 2026</li>
-                <li><strong>Location:</strong> Ault Park, Cincinnati, OH</li>
-                <li><strong>Varietal:</strong> Sauvignon Blanc</li>
+                <li><strong>Event:</strong> Fall Tasting 2026</li>
+                <li><strong>Date:</strong> October 1, 2026</li>
+                <li><strong>Location:</strong> Elm Street Plaza, Cincinnati, OH</li>
+                <li><strong>Varietal:</strong> Pinot Grigio</li>
                 <li><strong>Price:</strong> $30 per person</li>
               </ul>
             </div>
