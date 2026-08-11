@@ -1,8 +1,9 @@
-import Link from 'next/link'
+import Script from 'next/script'
 import Nav from '@/components/Nav'
 import Footer from '@/components/Footer'
 import EventSlider from '@/components/EventSlider'
 import type { Metadata } from 'next'
+import { STRIPE_BUY_BUTTON_ID, STRIPE_PUBLISHABLE_KEY } from '@/lib/stripe'
 
 export const metadata: Metadata = {
   title: 'Events - Bacchanalian Society',
@@ -28,9 +29,11 @@ export default function EventsPage() {
                   </p>
                 </div>
                 <div className="ticketsembedwrap" style={{ marginTop: '2rem' }}>
-                  <Link href="/tickets" className="primary-button cc-jumbo-button w-inline-block">
-                    <div>Buy Tickets</div>
-                  </Link>
+                  <Script src="https://js.stripe.com/v3/buy-button.js" strategy="afterInteractive" />
+                  <stripe-buy-button
+                    buy-button-id={STRIPE_BUY_BUTTON_ID}
+                    publishable-key={STRIPE_PUBLISHABLE_KEY}
+                  />
                 </div>
               </div>
               <img

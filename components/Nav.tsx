@@ -2,6 +2,7 @@
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { useState } from 'react'
+import { STRIPE_PAYMENT_LINK } from '@/lib/stripe'
 
 export default function Nav({ transparent = false }: { transparent?: boolean }) {
   const pathname = usePathname()
@@ -59,9 +60,14 @@ export default function Nav({ transparent = false }: { transparent?: boolean }) 
             <img src="/images/menu-icon_1menu-icon.png" width={22} alt="" className="menu-icon" />
           </button>
         </div>
-        <Link href="/tickets" className="primary-button cc-contact-us w-inline-block">
+        <a
+          href={STRIPE_PAYMENT_LINK}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="primary-button cc-contact-us w-inline-block"
+        >
           <div>Buy Tickets</div>
-        </Link>
+        </a>
       </div>
     </div>
   )

@@ -2,6 +2,7 @@ import Link from 'next/link'
 import Nav from '@/components/Nav'
 import Footer from '@/components/Footer'
 import type { Metadata } from 'next'
+import { STRIPE_PAYMENT_LINK } from '@/lib/stripe'
 
 export const metadata: Metadata = {
   title: 'Bacchanalian Society',
@@ -23,9 +24,14 @@ export default function Home() {
                 </div>
               </div>
               <div className="buttom-wrapper">
-                <Link href="/tickets" className="secondary-button borderdesign red w-inline-block">
+                <a
+                  href={STRIPE_PAYMENT_LINK}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="secondary-button borderdesign red w-inline-block"
+                >
                   <div>Buy Tickets</div>
-                </Link>
+                </a>
                 <Link href="/events" className="secondary-button borderdesign w-inline-block">
                   <div>Upcoming Event</div>
                 </Link>
