@@ -89,7 +89,7 @@ export default function Home() {
             <div>
               <div className="cta-text">
                 <div className="heading-jumbo-small">Fall Tasting 2026<br /></div>
-                <div className="paragraph-bigger cc-bigger-light">October 1, 2026 <br />Elm Street Plaza<br />Pinot Grigio<br /></div>
+                <div className="paragraph-bigger cc-bigger-light">October 1, 2026 · 7pm–10pm<br />Elm Street Plaza<br />Pinot Grigio<br /></div>
               </div>
               <Link href="/events" className="primary-button cc-jumbo-button w-inline-block">
                 <div>View Info</div>

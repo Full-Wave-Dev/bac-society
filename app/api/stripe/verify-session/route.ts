@@ -41,7 +41,7 @@ export async function POST(req: NextRequest) {
 
     const db = supabaseAdmin()
 
-    const EVENT_NAME = 'Fall Tasting 2026 — October 1, 2026 — Elm Street Plaza — Pinot Grigio'
+    const EVENT_NAME = 'Fall Tasting 2026 — October 1, 2026, 7pm–10pm — Elm Street Plaza — Pinot Grigio'
 
     const { data: existing } = await db
       .from('bac_ticket_purchases')
